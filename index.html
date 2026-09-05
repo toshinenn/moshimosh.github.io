@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADBU A'chik Nokdang Farewell 2026</title>
+<title>ADBU A'chik Nokdang Freshers' Welcome 2026</title>
 
 <style>
 * {margin:0;padding:0;box-sizing:border-box;}
@@ -132,12 +132,13 @@ iframe {
 <div class="navbar">
 <button onclick="openPopup('okamani')">Okamani Chitti</button>
 <button onclick="openPopup('food')">Food</button>
+<button onclick="openPopup('program')">Program</button>
 <button onclick="openPopup('location')">Location</button>
 </div>
 
 <!-- MAIN CARD -->
 <div class="main-card">
-<h1>ADBU A'chik Nokdang Farewell 2026</h1>
+<h1>ADBU A'chik Nokdang Freshers' Welcome 2026</h1>
 <p id="countdown"></p>
 </div>
 
@@ -149,7 +150,7 @@ iframe {
 
 <div class="popup-content">
 <p>
-Ka'sara chingni Senior rang, mande ra'bean baksa, chingni nambegipa salamko on'e nasimangna mol'molaniko onna kusi ong'a. Chong'motan, na'simangna manderaani tomaniko aro bon'kamgipa gronggrikaniko dakna May ja ni skanggipa sal (1st May, 2026) o Neexotica Hotel o ong'atnagita sienga. Uni gimin ia Farewell program ona na'simang sakantikon re'bapachina mol'molaniko on'atnagita kusi ong'bea.
+Ka'sara Freshers, mande ra'bean baksa, chingni nambegipa salamko on'e na'simangna mol'molaniko onna kusi ong'a. Chong'motan, na'simangko rimchaksoani chin gita September ja ni chigni tariko(12th September 2026)(Saturday) o Neexotica Hotel o A'chik Freshers' Program ko  ong'atnagita sienga. Uni gimin ia Freshers' program ona na'simang sakantikon re'bapachina mol'molaniko on'atnagita kusi ong'bea.
 <br><br>
 Somoi-2:00 PM<br>
 Biap-Hotel Neexotica,Banquet Hall,Azara
@@ -158,9 +159,6 @@ Biap-Hotel Neexotica,Banquet Hall,Azara
 
 </div>
 </div>
-
-<!-- PROGRAM -->
-
 
 <!-- FOOD -->
 <div id="food" class="popup">
@@ -205,6 +203,32 @@ Biap-Hotel Neexotica,Banquet Hall,Azara
 </div>
 </div>
 
+<!-- PROGRAM -->
+<div id="program" class="popup">
+<div class="popup-box">
+<button class="close-btn" onclick="closePopup('program')">×</button>
+<h2>Program</h2>
+
+<div class="popup-content">
+<p style="color:gold;">2:00 PM</p>
+<p>[Opening / welcome address]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Program item]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Program item]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Program item]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Lunch / dinner]</p>
+</div>
+
+</div>
+</div>
+
 <!-- LOCATION -->
 <div id="location" class="popup">
 <div class="popup-box">
@@ -229,17 +253,25 @@ Guwahati - 781017
 function openPopup(id){document.getElementById(id).style.display="flex";}
 function closePopup(id){document.getElementById(id).style.display="none";}
 
-/* COUNTDOWN */
-var countDate=new Date("May 1, 2026 14:00:00").getTime();
-setInterval(function(){
-var now=new Date().getTime();
-var d=countDate-now;
-var days=Math.floor(d/(1000*60*60*24));
-var hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-var minutes=Math.floor((d%(1000*60*60))/(1000*60));
-var seconds=Math.floor((d%(1000*60))/1000);
-document.getElementById("countdown").innerHTML=
-days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+/* COUNTDOWN — fixed: ISO format parses reliably on every browser (the old
+   "May 1, 2026 14:00:00" string could silently fail on Safari/iOS and show NaN) */
+var countDate = new Date("2026-09-12T14:00:00+05:30").getTime();
+var countdownTimer = setInterval(function(){
+    var now = new Date().getTime();
+    var d = countDate - now;
+
+    if (d <= 0) {
+        document.getElementById("countdown").innerHTML = "It's here! 🎉";
+        clearInterval(countdownTimer);
+        return;
+    }
+
+    var days = Math.floor(d/(1000*60*60*24));
+    var hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+    var minutes = Math.floor((d%(1000*60*60))/(1000*60));
+    var seconds = Math.floor((d%(1000*60))/1000);
+    document.getElementById("countdown").innerHTML =
+        days+"d "+hours+"h "+minutes+"m "+seconds+"s";
 },1000);
 </script>
 
