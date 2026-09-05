@@ -150,4 +150,125 @@ iframe {
 
 <div class="popup-content">
 <p>
-Ka'sara Freshers, mande ra'bean baksa, chingni nambegipa salamko on'e na'simangna mol'molaniko onna
+Ka'sara Freshers, mande ra'bean baksa, chingni nambegipa salamko on'e na'simangna mol'molaniko onna kusi ong'a. Chong'motan, na'simangko rimchaksoani chin gita September ja ni chigni tariko(12th September 2026)(Saturday) o Neexotica Hotel o A'chik Freshers' Program ko  ong'atnagita sienga. Uni gimin ia Freshers' program ona na'simang sakantikon re'bapachina mol'molaniko on'atnagita kusi ong'bea.
+<br><br>
+Somoi-2:00 PM<br>
+Biap-Hotel Neexotica,Banquet Hall,Azara
+</p>
+</div>
+
+</div>
+</div>
+
+<!-- FOOD -->
+<div id="food" class="popup">
+<div class="popup-box">
+<button class="close-btn" onclick="closePopup('food')">×</button>
+<h2>Food Items</h2>
+<div class="popup-content">
+<div class="food-stack">
+
+<div class="food-card">
+<img src="Dal.jpeg"><p>Dal</p>
+</div>
+
+<div class="food-card">
+<img src="Alu_doo.jpeg"><p>Alu doo</p>
+</div>
+
+<div class="food-card">
+<img src="Wak_bibik_kapa.jpeg"><p>Wak bibik kapa</p>
+</div>
+
+<div class="food-card">
+<img src="Wak_tangsek_pura.jpeg"><p>Wak tangsek pura</p>
+</div>
+
+<div class="food-card">
+<img src="Dochi_rita.jpeg"><p>Dochi Rita</p>
+</div>
+
+<div class="food-card">
+<img src="mi.jpg"><p>Mi</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- PROGRAM -->
+<div id="program" class="popup">
+<div class="popup-box">
+<button class="close-btn" onclick="closePopup('program')">×</button>
+<h2>Program</h2>
+
+<div class="popup-content">
+<p style="color:gold;">2:00 PM</p>
+<p>[Opening / welcome address]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Program item]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Program item]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Program item]</p>
+<br>
+<p style="color:gold;">[Time]</p>
+<p>[Lunch / dinner]</p>
+</div>
+
+</div>
+</div>
+
+<!-- LOCATION -->
+<div id="location" class="popup">
+<div class="popup-box">
+<button class="close-btn" onclick="closePopup('location')">×</button>
+<h2>Location</h2>
+
+<div class="popup-content">
+<a href="https://maps.google.com/?q=Hotel+Neexotica+Banquet+Hall+Azara+Guwahati" target="_blank">
+<iframe src="https://maps.google.com/maps?q=Hotel+Neexotica+Banquet+Hall+Azara+Guwahati&output=embed"></iframe>
+</a>
+<p style="margin-top:10px;">
+Hotel Neexotica, Banquet Hall,<br>
+Azara, Opp. Mountain Shadow,<br>
+Guwahati - 781017
+</p>
+</div>
+
+</div>
+</div>
+
+<script>
+function openPopup(id){document.getElementById(id).style.display="flex";}
+function closePopup(id){document.getElementById(id).style.display="none";}
+
+/* COUNTDOWN — fixed: ISO format parses reliably on every browser (the old
+   "May 1, 2026 14:00:00" string could silently fail on Safari/iOS and show NaN) */
+var countDate = new Date("2026-09-12T14:00:00+05:30").getTime();
+var countdownTimer = setInterval(function(){
+    var now = new Date().getTime();
+    var d = countDate - now;
+
+    if (d <= 0) {
+        document.getElementById("countdown").innerHTML = "It's time! 🎉";
+        clearInterval(countdownTimer);
+        return;
+    }
+
+    var days = Math.floor(d/(1000*60*60*24));
+    var hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+    var minutes = Math.floor((d%(1000*60*60))/(1000*60));
+    var seconds = Math.floor((d%(1000*60))/1000);
+    document.getElementById("countdown").innerHTML =
+        days+"d "+hours+"h "+minutes+"m "+seconds+"s";
+},1000);
+</script>
+
+</body>
+</html>
